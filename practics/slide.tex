@@ -1,0 +1,100 @@
+\documentclass[lualatex,aspectratio=169,unicode, 12pt]{beamer}
+
+\usepackage{luatexja}
+\usepackage{here, amsmath, latexsym, amssymb, bm, ascmac, mathtools, multicol, tcolorbox, subfig}
+
+\usetheme{Boadilla}
+% \usetheme[shape=square]{LightTheme}
+
+\title{タイトル}
+\subtitle{サブタイトル}
+\author[著者略称]{作者}
+\institute[所属略称]{所属}
+\date{\today}
+
+\usepackage{amsmath}	% required for `\align' (yatex added)
+\begin{document}
+
+\frame{\maketitle}
+
+\begin{frame}{スライド}
+ \begin{equation}
+  \frac{1}{s^{2}}\frac{\partial^{2} u}{\partial t^{2}} = \frac{\partial^{2} u}{\partial x^{2}} + \frac{\partial^{2} u}{\partial y^{2}} + \frac{\partial^{2} u}{\partial z^{2}}
+ \end{equation}
+\end{frame}
+
+\begin{frame}[plain]{目次}
+ \tableofcontents
+\end{frame}
+
+\section{目次の具体例}
+\begin{frame}[plain]{スライド}
+ arrayも使えます
+ \begin{align}
+  x &= a + 3 \\
+  y &= b - 4
+ \end{align}
+\end{frame}
+
+\section{箇条書き}
+\begin{frame}[plain]{箇条書き}
+ \begin{itemize}
+  \item item 1
+        \begin{enumerate}
+         \item item1-1
+         \item item1-2
+        \end{enumerate}
+  \item item 2
+        \begin{enumerate}[I]
+         \item item 2-1
+         \item item 2-2
+         \item item 2-3
+        \end{enumerate}
+ \end{itemize}
+\end{frame}
+
+\section{ブロック環境}
+\begin{frame}[plain]{ブロック環境}
+ \begin{block}{block}
+  simple block
+ \end{block}
+ \begin{alertblock}{alertblock}
+  alertblock
+ \end{alertblock}
+ \begin{exampleblock}{exampleblock}
+  exampleblock
+ \end{exampleblock}
+\end{frame}
+
+\begin{frame}[plain]{数学ブロック環境}
+ \begin{theorem}[定義名]
+  $e^{ix} = \cos x + i \sin x$
+ \end{theorem}
+ \begin{definition}[定義名]
+  $e^{ix} \approx 1 + x$
+ \end{definition}
+ \begin{corollary}[系名]
+  $a + b + c = 0$
+ \end{corollary}
+ \begin{proof}
+  $\int_{-\infty}^{\infty} e^{-a x^{2}} = 2 \int_{0}^{\infty} e^{-a x^{2}}$
+ \end{proof}
+\end{frame}
+
+\section{表}
+\begin{frame}[plain]{表}
+ \begin{table}
+  \caption{Caption}
+  \label{table:sample}
+  \centering
+  \begin{tabular}{ccc}
+   \hline
+   料理& 値段 & 場所 \\
+   \hline \hline
+   チキン & 200円 & 公園\\
+   \hline
+  \end{tabular}
+ \end{table}
+\end{frame}
+
+\end{document}

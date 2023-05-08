@@ -1,0 +1,56 @@
+\documentclass[lualatex]{standalone}
+\usepackage{luatexja}
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{shapes.callouts}
+
+\usepackage{amsmath}	% required for `\align*' (yatex added)
+
+\newcommand{\highlight}[2][yellow]{\tikz[baseline=(x.base)]{\node(x)[rectangle, fill=#1!10, rounded corners]{#2}}}
+\newcommand{\highlightcap}[3][yellow]{\tikz[baseline=(x.base)]{\node(x)[rectangle, fill=#1!10, rounded corners]{#2} node[below of =x, color=#1]{#3};}}
+
+\begin{document}
+ % \begin{tikzpicture}
+ %  \tikzset{block/.style={rectangle, fill=cyan!10, text width=3cm, text centered, rounded corners, minimum height=1.5cm}}
+ %  \node[block] {root} [level distance=3cm, sibling distance=4cm, edge from parent/.style={<-,draw}]
+ %    child{ node[block] {child1} }
+ %    child{ node[block] {child2}
+ %      child{node[block]{child2-1}}
+ %    }
+ %    child{ node[block] {child3} };
+ % \end{tikzpicture}
+ % \begin{tikzpicture}[every node/.style={circle, fill=cyan, text=white}]
+ %  \node (s) {s};
+ %  \node[above right=of s] (a) {a};
+ %  \node[below right=of s] (b) {b};
+ %  \node[right=1.5cm of a] (c) {c};
+ %  \node[right=1.5cm of b] (d) {d};
+ %  \node[below right=of c] (t) {t};
+
+ %  \foreach \u / \v in {s/a, s/b, a/b, a/c, b/c, b/d, c/t, d/t}
+ %    \draw[->] (\u) -- (\v);
+ % \end{tikzpicture}
+
+
+
+   % \begin{align*}
+   %  f(\mathbf{w}, b) =
+   %  \highlightcap[red]{$\displaystyle \sum_{i=1}^{k} (y_{i} - \mathbf{w}^{T}\mathbf{x}_{i}-b)^{2}$}{経験誤差}
+   %  +
+   %  \highlightcap[blue]{$\displaystyle \frac{\lambda}{2} \|\mathbf{w} \|^2$}{正則化項}
+   % \end{align*}
+     \tikz[remember picture, baseline=(bgraph.base)] {\node (bgraph) {G = (S,T;E)};}
+
+     \begin{tikzpicture}[remember picture, overlay]
+      \node[rectangle callout, fill=red!80, text=white, callout absolute pointer={(bgraph.north)}, above=of bgraph]{2部グラフ};
+     \end{tikzpicture}
+
+     \begin{tikzpicture}
+      \draw[->, red, line width=2pt]  (0,0) -- (0,1) (2,2) -- (1,3);
+      \node (0,0) (v0) {leaf};
+      \path[->, draw] (0,0) -- node[above]{my path} (3,0);
+      \path[draw] (0,0) -- node[sloped, above]{my path} (10,3);
+     \end{tikzpicture}
+
+\end{document}
